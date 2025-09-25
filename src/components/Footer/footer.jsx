@@ -8,9 +8,9 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-col">
+        <div className="footer-col-">
           <Link to={"/"}>
-            <div className="header-logo-div">
+            <div className="footer-logo-div">
               <img className="logo-footer" src={Logo} alt="" />
               <div>
                 <p>Bizning Maktab</p>
@@ -31,39 +31,39 @@ function Footer() {
             ></iframe>
           </div>
         </div>
+        <div className="footer-flex">
+          <div className="footer-col">
+            <h3>Sahifalar</h3>
+            <Link to="/" className="footer-link">
+              Asosiy
+            </Link>
+            <Link to="/news" className="footer-link">
+              Yangiliklar
+            </Link>
+            <Link to="/teachers" className="footer-link">
+              O'qituvchilar
+            </Link>
+            <Link to="/schedule" className="footer-link">
+              Dars Jadvali
+            </Link>
+            <Link to="/announcements" className="footer-link">
+              E'lonlar
+            </Link>
+            <Link to={"/about"}>Biz Haqimizda</Link>
+          </div>
 
-        <div className="footer-col">
-          <h3>Quick Links</h3>
-          <Link to="/" className="footer-link">
-            Asosiy
-          </Link>
-          <Link to="/news" className="footer-link">
-            Yangiliklar
-          </Link>
-          <Link to="/teachers" className="footer-link">
-            O'qituvchilar
-          </Link>
-          <Link to="/schedule" className="footer-link">
-            Dars Jadvali
-          </Link>
-          <Link to="/announcements" className="footer-link">
-            E'lonlar
-          </Link>
-          <Link to={"/about"}>Biz Haqimizda</Link>
+          <div className="footer-col">
+            <h3>Bog'lanish uchun</h3>
+            <a href="tel:+998901234567" className="footer-link">
+              +998 90 123 45 67
+            </a>
+            <a href="mailto:info@liftmedia.com" className="footer-link">
+              info@liftmedia.com
+            </a>
+          </div>
         </div>
-
         <div className="footer-col">
-          <h3>Bog'lanish uchun</h3>
-          <a href="tel:+998901234567" className="footer-link">
-            +998 90 123 45 67
-          </a>
-          <a href="mailto:info@liftmedia.com" className="footer-link">
-            info@liftmedia.com
-          </a>
-        </div>
-
-        <div className="footer-col">
-          <h3>Follow Us</h3>
+          <h3>Bizga obuna bo'ling</h3>
           <div className="footer-socials">
             <a
               href="https://instagram.com"
@@ -88,10 +88,11 @@ function Footer() {
             </a>
           </div>
         </div>
+
       </div>
 
       <div className="footer-bottom">
-        <p>© 2025 Lift Media. All rights reserved.</p>
+        <p>© 2025 Lift Media. Hamma huquqlar himoyalangan.</p>
       </div>
     </footer>
   );

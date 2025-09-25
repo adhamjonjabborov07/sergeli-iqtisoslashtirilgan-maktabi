@@ -6,7 +6,7 @@
     border-top: 1px solid #e5e7eb;
 }
 
-/* Container grid */
+
 .footer-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -15,7 +15,7 @@
     margin: 0 auto;
 }
 
-/* Column */
+
 .footer-col h3 {
     font-size: 18px;
     margin-bottom: 15px;
@@ -37,13 +37,13 @@
     color: #14215c;
 }
 
-/* Logo */
+
 .footer-logo {
-    width: 120px;
+    width: 30%;
     margin-bottom: 15px;
 }
 
-/* Socials */
+
 .footer-socials {
     display: flex;
     gap: 15px;
@@ -60,7 +60,7 @@
     transform: scale(1.2);
 }
 
-/* Bottom */
+
 .footer-bottom {
     text-align: center;
     margin-top: 40px;

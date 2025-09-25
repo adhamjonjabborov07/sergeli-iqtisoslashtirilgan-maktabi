@@ -4,15 +4,15 @@ import { FaInstagram } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import Logo from "../Footer/logo.svg";
 function footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* Column 1 - Logo + Contact */}
+
         <div className="footer-col">
-          <img src="/logo.png" alt="Company Logo" className="footer-logo" />
+          <img src={Logo} alt="Company Logo" className="footer-logo" />
           <p className="footer-address">
             5123 Market St. #22B <br />
             Charlotttesville, California <br />
@@ -26,7 +26,7 @@ function footer() {
           </a>
         </div>
 
-        {/* Column 2 - Quick Links */}
+
         <div className="footer-col">
           <h3>Quick Links</h3>
           <Link to="/products" className="footer-link">Product</Link>
@@ -35,14 +35,14 @@ function footer() {
           <Link to="/about" className="footer-link">About Us</Link>
         </div>
 
-        {/* Column 3 - Policies */}
+
         <div className="footer-col">
           <h3>Policies</h3>
           <Link to="/privacy" className="footer-link">Privacy Policy</Link>
           <Link to="/terms" className="footer-link">Terms & Conditions</Link>
         </div>
 
-        {/* Column 4 - Socials */}
+  
         <div className="footer-col">
           <h3>Follow Us</h3>
           <div className="footer-socials">

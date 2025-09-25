@@ -8,6 +8,7 @@ import News from "./pages/News/news";
 import Teachers from "./pages/Teachers/teachers";
 import Schedule from "./pages/Schedule/schedule";
 import Announcements from "./pages/Announcements/announcements";
+import About from "./pages/AboutUs/Aboutus";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/teachers" element={<Layout><Teachers/></Layout>}/>
         <Route path="/schedule" element={<Layout><Schedule/></Layout>}/>
         <Route path="/announcements" element={<Layout><Announcements/></Layout>}/>
+        <Route path="/about" element={<Layout><About/></Layout>}/>
       </Routes>
     </>
   );

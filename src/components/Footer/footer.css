@@ -69,6 +69,12 @@
     border-top: 1px solid #e5e7eb;
     padding-top: 20px;
 }
-.logo-footer{
+
+.logo-footer {
     width: 30%;
+}
+
+.footer-map {
+    border: 3px solid #1e3a8a;
+    margin: 5px;
 }

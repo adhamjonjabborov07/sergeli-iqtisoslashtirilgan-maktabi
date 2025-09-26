@@ -1,0 +1,91 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "firstName": "Ali",
+      "lastName": "Karimov",
+      "subject": "Matematika",
+      "email": "ali.karimov@example.com",
+      "phone": "+998901234567",
+      "classIds": [1, 2]
+    },
+    {
+      "id": 2,
+      "firstName": "Dina",
+      "lastName": "Saidova",
+      "subject": "Ingliz tili",
+      "email": "dina.saidova@example.com",
+      "phone": "+998909876543",
+      "classIds": [3]
+    },
+    {
+      "id": 3,
+      "firstName": "Otabek",
+      "lastName": "Rustamov",
+      "subject": "Fizika",
+      "email": "otabek.rustamov@example.com",
+      "phone": "+998933112233",
+      "classIds": [4, 5]
+    }
+  ],
+  "classes": [
+    {
+      "id": 1,
+      "name": "7-A",
+      "grade": 7,
+      "room": "101",
+      "teacherId": 1,
+      "studentIds": [1,2,3,4]
+    },
+    {
+      "id": 2,
+      "name": "8-B",
+      "grade": 8,
+      "room": "102",
+      "teacherId": 1,
+      "studentIds": [5,6,7]
+    },
+    {
+      "id": 3,
+      "name": "9-C",
+      "grade": 9,
+      "room": "201",
+      "teacherId": 2,
+      "studentIds": [8,9,10,11]
+    },
+    {
+      "id": 4,
+      "name": "10-A",
+      "grade": 10,
+      "room": "202",
+      "teacherId": 3,
+      "studentIds": [12,13,14]
+    },
+    {
+      "id": 5,
+      "name": "11-B",
+      "grade": 11,
+      "room": "301",
+      "teacherId": 3,
+      "studentIds": [15,16]
+    }
+  ],
+  "students": [
+    { "id": 1, "firstName": "Bek", "lastName": "Akbarov", "age": 13, "gender": "M", "classId": 1 },
+    { "id": 2, "firstName": "Nilufar", "lastName": "Ismoilova", "age": 13, "gender": "F", "classId": 1 },
+    { "id": 3, "firstName": "Javlon", "lastName": "Qodirov", "age": 13, "gender": "M", "classId": 1 },
+    { "id": 4, "firstName": "Laylo", "lastName": "Hamidova", "age": 14, "gender": "F", "classId": 1 },
+    { "id": 5, "firstName": "Anvar", "lastName": "Mirzaev", "age": 14, "gender": "M", "classId": 2 },
+    { "id": 6, "firstName": "Zarina", "lastName": "Olimova", "age": 14, "gender": "F", "classId": 2 },
+    { "id": 7, "firstName": "Rustam", "lastName": "Xudoyberdiyev", "age": 14, "gender": "M", "classId": 2 },
+    { "id": 8, "firstName": "Madina", "lastName": "Karimova", "age": 15, "gender": "F", "classId": 3 },
+    { "id": 9, "firstName": "Sardor", "lastName": "Yusupov", "age": 15, "gender": "M", "classId": 3 },
+    { "id": 10, "firstName": "Gulbahor", "lastName": "Ergasheva", "age": 15, "gender": "F", "classId": 3 },
+    { "id": 11, "firstName": "Bekzod", "lastName": "Karimov", "age": 15, "gender": "M", "classId": 3 },
+    { "id": 12, "firstName": "Shahzoda", "lastName": "Orifova", "age": 16, "gender": "F", "classId": 4 },
+    { "id": 13, "firstName": "Aziz", "lastName": "Sultonov", "age": 16, "gender": "M", "classId": 4 },
+    { "id": 14, "firstName": "Nigora", "lastName": "Abdullaeva", "age": 16, "gender": "F", "classId": 4 },
+    { "id": 15, "firstName": "Murod", "lastName": "Qodirov", "age": 17, "gender": "M", "classId": 5 },
+    { "id": 16, "firstName": "Feruza", "lastName": "Toshpulatova", "age": 17, "gender": "F", "classId": 5 }
+  ]
+}

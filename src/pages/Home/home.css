@@ -54,7 +54,6 @@
     color: #fff;
 }
 
-/* Buttons section */
 .features-section {
     display: flex;
     gap: 20px;
@@ -203,7 +202,7 @@
 
 .advantages-block {
     padding: 80px 20px;
-    background: #f8fafc;
+    background: #f3f7fc;
 }
 
 .advantages-wrapper {
@@ -251,10 +250,11 @@
     width: 270px;
     height: 300px;
     padding: 40px 30px;
-    border-radius: 12px;
-    text-align: center;
+    border-radius: 15px;
+    text-align: left;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    border-bottom: 4px solid #0e3edb;
 }
 
 .benefit-card:hover {
@@ -265,7 +265,7 @@
 .benefit-card-icon {
     width: 70px;
     height: 70px;
-    margin: 0 auto 20px;
+    margin: 0 0px 30px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -274,25 +274,21 @@
     z-index: 2;
 }
 
-/* Birinchi karta ikonkasi - O'qituvchilar */
 .benefit-card:nth-child(1) .benefit-card-icon {
     background: linear-gradient(135deg, #3B82F6, #60A5FA);
     color: white;
 }
 
-/* Ikkinchi karta ikonkasi - Dasturlar */
 .benefit-card:nth-child(2) .benefit-card-icon {
     background: linear-gradient(135deg, #10B981, #34D399);
     color: white;
 }
 
-/* Uchinchi karta ikonkasi - Natijalar */
 .benefit-card:nth-child(3) .benefit-card-icon {
     background: linear-gradient(135deg, #F59E0B, #FBBF24);
     color: white;
 }
 
-/* To'rtinchi karta ikonkasi - Yondashuv */
 .benefit-card:nth-child(4) .benefit-card-icon {
     background: linear-gradient(135deg, #EC4899, #F472B6);
     color: white;
@@ -313,7 +309,6 @@
     font-family: 'Inter', Arial, sans-serif;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .advantages-block {
         padding: 60px 15px;

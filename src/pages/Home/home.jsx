@@ -3,6 +3,7 @@ import "./home.css";
 import { FiBookOpen, FiUsers } from "react-icons/fi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 
 function Home() {
@@ -23,7 +24,7 @@ function Home() {
           <img src="/src/pages/Home/banner2.png" alt="Banner 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/src/pages/Home/banner3.jpg" alt="Banner 3" />
+          <img src="/src/pages/Home/banner3.png" alt="Banner 3" />
         </SwiperSlide>
       </Swiper>
 
@@ -36,12 +37,12 @@ function Home() {
           <div className="features-section">
             <button className="feature-card-primary-card">
               <FiBookOpen size={20} />
-              <span>Oxirgi yangiliklar</span>
+              <span><Link to={'/news'}>Oxirgi yangiliklar</Link></span>
             </button>
 
             <button className="feature-card-blur-card">
               <FiUsers size={20} />
-              <span>Bizning ustozlar</span>
+              <span><Link to={'/teachers'}>Bizning ustozlar</Link></span>
             </button>
           </div>
         </div>

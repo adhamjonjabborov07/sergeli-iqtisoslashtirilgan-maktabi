@@ -66,12 +66,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 285px;
+  width: 295px;
   background: #1e3b8a;
   color: white;
+  height: 60px;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 15px 60px;
+  padding: 15px 65px;
   border: none;
   border-radius: 12px;
   cursor: pointer;

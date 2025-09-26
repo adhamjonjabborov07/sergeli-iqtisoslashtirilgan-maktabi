@@ -9,7 +9,6 @@ import "swiper/css";
 function Home() {
   return (
     <div className="welcome-container">
-
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -28,22 +27,24 @@ function Home() {
         </SwiperSlide>
       </Swiper>
 
-
       <div className="welcome-overlay">
         <div className="welcome-content">
           <h1 className="welcome-title">Bizning maktabimizga xush kelibsiz</h1>
           <p className="welcome-subtitle">Kelajak uchun ta'lim</p>
 
           <div className="features-section">
-            <button className="feature-card-primary-card">
-              <FiBookOpen size={20} />
-              <span><Link to={'/news'}>Oxirgi yangiliklar</Link></span>
-            </button>
-
-            <button className="feature-card-blur-card">
-              <FiUsers size={20} />
-              <span><Link to={'/teachers'}>Bizning ustozlar</Link></span>
-            </button>
+            <Link to={"/news"}>
+              <button className="feature-card-primary-card">
+                <FiBookOpen size={20} />
+                <span>Oxirgi yangiliklar</span>
+              </button>
+            </Link>
+            <Link to={"/teachers"}>
+              <button className="feature-card-blur-card">
+                <FiUsers size={20} />
+                <span>Bizning ustozlar</span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

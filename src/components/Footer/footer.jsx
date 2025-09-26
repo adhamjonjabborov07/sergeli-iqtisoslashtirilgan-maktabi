@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.css";
-import { FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa";
+import { FaInstagram, FaTelegram, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../Footer/logo.svg";
 
@@ -77,7 +77,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaYoutube />
+              <FaTelegram />
             </a>
             <a
               href="https://facebook.com"

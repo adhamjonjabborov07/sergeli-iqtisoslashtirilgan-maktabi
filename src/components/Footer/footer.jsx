@@ -66,7 +66,7 @@ function Footer() {
           <h3>Bizga obuna bo'ling</h3>
           <div className="footer-socials">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/sergeli_ixtisos_maktabi/"
               target="_blank"
               rel="noopener noreferrer"
             >

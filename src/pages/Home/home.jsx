@@ -23,7 +23,7 @@ function Home() {
           <img src="/src/pages/Home/banner2.png" alt="Banner 2" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="/src/pages/Home/banner3.jpg" alt="Banner 3" />
+          <img src="/src/pages/Home/banner3.png" alt="Banner 3" />
         </SwiperSlide>
       </Swiper>
 

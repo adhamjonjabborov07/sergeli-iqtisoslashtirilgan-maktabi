@@ -8,8 +8,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import "swiper/css";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [students, setStudents] = useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [classes, setClasses] = useState([]);
+
+  // API dan ma’lumotlarni olish
+  useEffect(() => {
+    fetch("http://localhost:3000/students")
+      .then((res) => res.json())
+      .then((data) => setStudents(data))
+      .catch((err) => console.error("Students error:", err));
+
+    fetch("http://localhost:3000/teachers")
+      .then((res) => res.json())
+      .then((data) => setTeachers(data))
+      .catch((err) => console.error("Teachers error:", err));
+
+    fetch("http://localhost:3000/classes")
+      .then((res) => res.json())
+      .then((data) => setClasses(data))
+      .catch((err) => console.error("Classes error:", err));
+  }, []);
   return (
     <>
       <div className="welcome-container">
@@ -60,7 +82,7 @@ function Home() {
               <LuGraduationCap size={30} />
             </p>
             <p className="section-div-card-p1">
-
+              {students.length}
             </p>
             <p className="section-div-card-p2">
               O'quvchilar
@@ -71,7 +93,7 @@ function Home() {
               <FiUsers size={30} />
             </p>
             <p className="section-div-card-p1">
-
+              {teachers.length}
             </p>
             <p className="section-div-card-p2">
               Ustozlar
@@ -82,7 +104,7 @@ function Home() {
               <FiBookOpen size={30} />
             </p>
             <p className="section-div-card-p1">
-
+              {classes.length}
             </p>
             <p className="section-div-card-p2">
               Sinflar

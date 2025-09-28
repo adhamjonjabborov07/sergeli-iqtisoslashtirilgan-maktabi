@@ -1,20 +1,18 @@
-// generate.js
 import { faker } from "@faker-js/faker";
 import fs from "fs";
 
-const TOTAL_STUDENTS = 240; // nechta student bo‘lishini shu yerda belgilaysan
+const TOTAL_STUDENTS = 504;
 const STUDENTS_PER_CLASS = 24;
 
 const students = [];
 const classes = [];
 const teachers = [];
+const news = [];
 
 let classId = 1;
 let teacherId = 1;
 
-// Har 24 ta studentdan keyin yangi sinf yaratiladi
 for (let i = 1; i <= TOTAL_STUDENTS; i++) {
-  // Agar yangi sinf kerak bo‘lsa
   if ((i - 1) % STUDENTS_PER_CLASS === 0) {
     const grade = faker.number.int({ min: 5, max: 11 });
     const section = faker.string.alpha({ length: 1, casing: "upper" });
@@ -30,6 +28,7 @@ for (let i = 1; i <= TOTAL_STUDENTS; i++) {
 
     teachers.push({
       id: teacherId,
+      photo: faker.image.avatar(),
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
       subject: faker.helpers.arrayElement([
@@ -39,8 +38,6 @@ for (let i = 1; i <= TOTAL_STUDENTS; i++) {
         "Tarix",
         "Kimyo",
       ]),
-      email: faker.internet.email(),
-      phone: faker.phone.number("+9989########"),
       classIds: [classId],
     });
 
@@ -63,12 +60,18 @@ for (let i = 1; i <= TOTAL_STUDENTS; i++) {
   classes[currentClassId - 1].studentIds.push(i);
 }
 
-const db = { teachers, classes, students };
+for (let i = 1; i <= 12; i++) {
+  news.push({
+    id: i,
+    image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
+    title: faker.lorem.sentence({ min: 3, max: 7 }),
+    description: faker.lorem.paragraph({ min: 2, max: 4 }),
+    date: faker.date.recent({ days: 30 }).toISOString().split("T")[0],
+  });
+}
+
+const db = { teachers, classes, students, news };
 
 fs.writeFileSync("db.json", JSON.stringify(db, null, 2), "utf-8");
 
 console.log("✅ db.json tayyor!");
-
-// Natijada:
-// 240 student → 10 sinf
-// 10 teacher → 10 sinfga biriktiriladi

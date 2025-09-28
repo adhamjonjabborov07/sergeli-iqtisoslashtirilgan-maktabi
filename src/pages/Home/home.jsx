@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./home.css";
 import { FiBookOpen, FiUsers } from "react-icons/fi";
 import { LuGraduationCap } from "react-icons/lu";
@@ -8,30 +8,60 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import "swiper/css";
-import { useEffect, useState } from "react";
 
 function Home() {
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [classes, setClasses] = useState([]);
 
-  // API dan ma’lumotlarni olish
+  const [studentCount, setStudentCount] = useState(0);
+  const [teacherCount, setTeacherCount] = useState(0);
+  const [classCount, setClassCount] = useState(0);
+
   useEffect(() => {
     fetch("http://localhost:3000/students")
       .then((res) => res.json())
-      .then((data) => setStudents(data))
-      .catch((err) => console.error("Students error:", err));
+      .then((data) => setStudents(data));
 
     fetch("http://localhost:3000/teachers")
       .then((res) => res.json())
-      .then((data) => setTeachers(data))
-      .catch((err) => console.error("Teachers error:", err));
+      .then((data) => setTeachers(data));
 
     fetch("http://localhost:3000/classes")
       .then((res) => res.json())
-      .then((data) => setClasses(data))
-      .catch((err) => console.error("Classes error:", err));
+      .then((data) => setClasses(data));
   }, []);
+
+  useEffect(() => {
+    const duration = 6000;
+    const steps = 200;
+    const interval = duration / steps;
+
+    let studentStep = students.length / steps;
+    let teacherStep = teachers.length / steps;
+    let classStep = classes.length / steps;
+
+    let s = 0, t = 0, c = 0;
+    const timer = setInterval(() => {
+      s += studentStep;
+      t += teacherStep;
+      c += classStep;
+
+      if (s >= students.length && t >= teachers.length && c >= classes.length) {
+        clearInterval(timer);
+        setStudentCount(students.length);
+        setTeacherCount(teachers.length);
+        setClassCount(classes.length);
+      } else {
+        setStudentCount(Math.floor(s));
+        setTeacherCount(Math.floor(t));
+        setClassCount(Math.floor(c));
+      }
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [students, teachers, classes]);
+
   return (
     <>
       <div className="welcome-container">
@@ -75,40 +105,29 @@ function Home() {
           </div>
         </div>
       </div>
+
       <section className="section">
         <div className="section-div">
           <div className="section-div-card">
             <p className="section-div-card-icon">
               <LuGraduationCap size={30} />
             </p>
-            <p className="section-div-card-p1">
-              {students.length}
-            </p>
-            <p className="section-div-card-p2">
-              O'quvchilar
-            </p>
+            <p className="section-div-card-p1">{studentCount}</p>
+            <p className="section-div-card-p2">O'quvchilar</p>
           </div>
           <div className="section-div-card">
             <p className="section-div-card-icon">
               <FiUsers size={30} />
             </p>
-            <p className="section-div-card-p1">
-              {teachers.length}
-            </p>
-            <p className="section-div-card-p2">
-              Ustozlar
-            </p>
+            <p className="section-div-card-p1">{teacherCount}</p>
+            <p className="section-div-card-p2">Ustozlar</p>
           </div>
           <div className="section-div-card">
             <p className="section-div-card-icon">
               <FiBookOpen size={30} />
             </p>
-            <p className="section-div-card-p1">
-              {classes.length}
-            </p>
-            <p className="section-div-card-p2">
-              Sinflar
-            </p>
+            <p className="section-div-card-p1">{classCount}</p>
+            <p className="section-div-card-p2">Sinflar</p>
           </div>
         </div>
       </section>

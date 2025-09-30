@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FiBookOpen, FiUsers } from "react-icons/fi";
 import * as XLSX from "xlsx";
 import "./schedule.css";
 

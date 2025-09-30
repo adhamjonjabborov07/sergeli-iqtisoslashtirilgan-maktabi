@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { FiBookOpen, FiUsers } from "react-icons/fi";
 import { LuGraduationCap } from "react-icons/lu";
-import { GiTrophyCup } from "react-icons/gi";
+import { GoTrophy } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -163,7 +163,7 @@ function Home() {
 
             <div className="benefit-card">
               <p className="benefit-card-icon">
-                <GiTrophyCup size={30} />
+                <GoTrophy size={30} />
               </p>
               <h3 className="benefit-name">Yuqori natijalar</h3>
               <p className="benefit-info">

@@ -18,248 +18,78 @@
     margin-bottom: 30px;
 }
 
-.form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 700px;
-    max-width: 100%;
-    height: 50px;
-    background: #fff;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    margin: 0 auto 30px;
-    padding: 0 14px;
-    transition: 0.3s;
-}
-
-.form:focus-within {
-    border-color: #4a90e2;
-    box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
-}
-
-.input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    padding: 0 10px;
-}
-
-.input:focus {
-    outline: none;
-}
-
-.form button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #555;
-}
-
-.reset {
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.2s;
-}
-
-input:not(:placeholder-shown)~.reset {
-    opacity: 1;
-    visibility: visible;
-}
-
 .teachers-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
-    padding: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 .teacher-card {
     background: #fff;
-    border-radius: 18px;
-    padding: 25px 20px;
+    border-radius: 16px;
+    padding: 20px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-style: preserve-3d;
+    border: 1px solid #eee;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+    transition: all 0.3s ease;
 }
 
 .teacher-card:hover {
-    transform: translateY(-8px) scale(1.03) rotateX(4deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 .teacher-card img {
     width: 100%;
-    height: 450px;
-    border-radius: 5%;
+    height: 280px;
+    border-radius: 12px;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 4px solid #4a90e2;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+    border: 3px solid #102d99;
 }
 
 .teacher-card h3 {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #2c3e50;
-}
-
-.teacher-card p {
-    margin: 3px 0;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.teacher-card .subject {
-    font-size: 16px;
-    font-weight: 600;
-    color: #4a90e2;
-}
-
-.details-btn {
-    margin-top: 12px;
-    padding: 10px 20px;
-    width: 100px;
-    background: #ffffff;
-    color: #4a90e2;
-    border: none;
-    border: 2px solid #4a90e2;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.details-btn:hover {
-    background: #ffffff;
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-.details-btn:active {
-    transform: translateY(0) scale(0.98);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-}
-
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.55);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1200;
-}
-
-.modal {
-    background: #fff;
-    border-radius: 20px;
-    padding: 40px 35px;
-    width: 700px;
-    max-width: 95%;
-    text-align: center;
-    position: relative;
-    animation: fadeIn 0.35s ease;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
-    transform: scale(0.95);
-    animation: modalPop 0.3s ease forwards;
-}
-
-.modal img {
-    width: 500px;
-    height: 500px;
-    border-radius: 5%;
-    border: 5px solid #4a90e2;
-    margin-bottom: 18px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-}
-
-.modal h2 {
-    margin-bottom: 12px;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 700;
+    margin-bottom: 6px;
     color: #222;
 }
 
-.modal p {
-    font-size: 16px;
-    margin: 8px 0;
-    color: #555;
+.teacher-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
 }
 
-.modal .subject {
-    font-size: 18px;
+.teacher-card .subject {
+    font-size: 15px;
     font-weight: 600;
-    color: #4a90e2;
+    color: #102d99;
+    margin-bottom: 12px;
 }
 
-.modal-close {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    background: transparent;
+.details-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background: #102d99;
+    color: #fff;
     border: none;
-    font-size: 26px;
+    border-radius: 6px;
     cursor: pointer;
-    color: #444;
-    transition: 0.2s;
+    transition: background 0.3s ease;
 }
 
-.modal-close:hover {
-    transform: rotate(90deg);
-    color: #e74c3c;
-}
-
-@keyframes modalPop {
-    from {
-        opacity: 0;
-        transform: scale(0.8) translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@media (max-width: 992px) {
-    .teachers-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .modal {
-        width: 90%;
-        padding: 30px 25px;
-    }
+.details-btn:hover {
+    background: #0d1c70;
 }
 
 @media (max-width: 600px) {
-    .teachers-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .teachers-section-p1 {
-        font-size: 30px;
-    }
-
-    .modal {
-        width: 95%;
-        padding: 25px 20px;
-    }
-
-    .modal img {
-        width: 120px;
-        height: 120px;
+    .teacher-card img {
+        height: 220px;
     }
 }
-

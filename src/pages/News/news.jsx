@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IoCalendarNumber } from "react-icons/io5";
-import "./news.css";
+import { Link } from "react-router-dom";
+import "/src/pages/News/news.css";
 
 function News() {
   const [news, setNews] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNews, setSelectedNews] = useState(null);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -26,121 +26,49 @@ function News() {
   );
 
   return (
-    <>
-      <div className="news-section">
-        <p className="news-section-p1">Maktab yangiliklari</p>
-        <p className="news-section-p2">
-          Maktabimiz hayotidagi so‘nggi voqealar va muhim yangiliklar
-        </p>
+    <div className="news-section">
+      <p className="news-section-p1">Maktab yangiliklari</p>
+      <p className="news-section-p2">
+        Maktabimiz hayotidagi so‘nggi voqealar va muhim yangiliklar
+      </p>
 
-        <form className="form" onSubmit={(e) => e.preventDefault()}>
-          <button type="button">
-            <svg
-              width={17}
-              height={16}
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-labelledby="search"
-            >
-              <path
-                d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                stroke="currentColor"
-                strokeWidth="1.333"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <input
-            className="input"
-            placeholder="Yangiliklarni qidirish..."
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button
-            className="reset"
-            type="button"
-            onClick={() => setSearchTerm("")}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </form>
+      <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <input
+          className="input"
+          placeholder="Yangiliklarni qidirish..."
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </form>
 
-        <div className="news-list">
-          {filteredNews.map((item) => (
-            <div key={item.id} className="news-card">
-              <img src={item.image} alt={item.title} />
-
-              <div className="news-card-header">
-                <h3>{item.title}</h3>
-              </div>
-
-              <p>{item.description}</p>
-
-              <div className="news-card-footer">
-                <div className="news-date">
-                  <IoCalendarNumber className="calendar-icon" />
-                  <span className="date-text">{item.date}</span>
-                </div>
-
-                <button
-                  className="detail-link"
-                  onClick={() => setSelectedNews(item)}
-                  aria-label={`Batafsil: ${item.title}`}
-                >
-                  Batafsil
-                </button>
-              </div>
+      <div className="news-list">
+        {filteredNews.map((item) => (
+          <div key={item.title} className="news-card">
+            <img src={item.image} alt={item.title} />
+            <div className="news-card-header">
+              <h3>{item.title}</h3>
             </div>
-          ))}
-        </div>
-
-        {/* Modal strukturasi shu faylda */}
-        {selectedNews && (
-          <div
-            className="modal-overlay"
-            onClick={() => setSelectedNews(null)}
-          >
-            <div
-              className="modal-content"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="modal-close"
-                onClick={() => setSelectedNews(null)}
-              >
-                ✕
-              </button>
-
-              <img src={selectedNews.image} alt={selectedNews.title} />
-
-              <h2>{selectedNews.title}</h2>
-              <p>{selectedNews.description}</p>
-
-              <div className="modal-footer">
+            <p>{item.description}</p>
+            <div className="news-card-footer">
+              <div className="news-date">
                 <IoCalendarNumber className="calendar-icon" />
-                <span>{selectedNews.date}</span>
+                <span className="date-text">{item.date}</span>
               </div>
+
+              {/* Obyektni state orqali yuboryapmiz */}
+              <Link
+                to="/news/details"
+                state={{ news: item }}
+                className="detail-link"
+              >
+                Batafsil
+              </Link>
             </div>
           </div>
-        )}
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 

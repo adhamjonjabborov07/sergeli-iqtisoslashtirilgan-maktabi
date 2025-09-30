@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./teachers.css";
+import { Link } from "react-router-dom";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
-  const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -16,7 +16,6 @@ function Teachers() {
         console.error("Error fetching teachers:", error);
       }
     };
-
     fetchTeachers();
   }, []);
 
@@ -36,24 +35,6 @@ function Teachers() {
           Bizning professional o'qituvchilar jamoamiz bilan tanishing
         </p>
         <form className="form" onSubmit={(e) => e.preventDefault()}>
-          <button type="button">
-            <svg
-              width={17}
-              height={16}
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-labelledby="search"
-            >
-              <path
-                d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                stroke="currentColor"
-                strokeWidth="1.333"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
           <input
             className="input"
             placeholder="Fan yoki ism bo'yicha qidiring"
@@ -66,20 +47,7 @@ function Teachers() {
             type="button"
             onClick={() => setSearchTerm("")}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            ✕
           </button>
         </form>
       </div>
@@ -98,42 +66,19 @@ function Teachers() {
               <p className="subject">{teacher.subject}</p>
               <p>{teacher.email}</p>
               <p>{teacher.phone}</p>
-              <button
+              <Link
+                to={`/teachers/${teacher.id}`}
+                state={{ teacher }}
                 className="details-btn"
-                onClick={() => setSelectedTeacher(teacher)}
               >
                 Batafsil
-              </button>
+              </Link>
             </div>
           ))
         ) : (
           <p className="no-result">Hech narsa topilmadi 😔</p>
         )}
       </section>
-
-      {selectedTeacher && (
-        <div className="modal-overlay" onClick={() => setSelectedTeacher(null)}>
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="modal-close"
-              onClick={() => setSelectedTeacher(null)}
-            >
-              ✕
-            </button>
-            <img
-              src={selectedTeacher.photo}
-              alt={`${selectedTeacher.firstName} ${selectedTeacher.lastName}`}
-            />
-            <h2>
-              {selectedTeacher.firstName} {selectedTeacher.lastName}
-            </h2>
-            <p className="subject">{selectedTeacher.subject}</p>
-          </div>
-        </div>
-      )}
     </>
   );
 }

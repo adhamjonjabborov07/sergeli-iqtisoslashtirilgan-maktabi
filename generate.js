@@ -8,6 +8,7 @@ const students = [];
 const classes = [];
 const teachers = [];
 const news = [];
+const anons = [];
 
 let classId = 1;
 let teacherId = 1;
@@ -31,6 +32,8 @@ for (let i = 1; i <= TOTAL_STUDENTS; i++) {
       photo: faker.image.avatar(),
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
+      age: faker.number.int({ min: 25, max: 65 }),
+      workExperience: faker.number.int({ min: 1, max: 40 }),
       subject: faker.helpers.arrayElement([
         "Matematika",
         "Fizika",
@@ -70,7 +73,24 @@ for (let i = 1; i <= 12; i++) {
   });
 }
 
-const db = { teachers, classes, students, news };
+for (let i = 1; i <= 5; i++) {
+  const startDate = faker.date.recent({ days: 10 });
+  const endDate = faker.date.soon({ days: 10, refDate: startDate });
+
+  anons.push({
+    id: i,
+    image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
+    title: faker.lorem.words(5),
+    description: faker.lorem.sentence(10),
+    startDate: startDate.toISOString().split("T")[0],
+    endDate: endDate.toISOString().split("T")[0],
+    time: "12:00 AM - 2:00 PM",
+    location: "https://maps.google.com/?q=Tashkent"
+  });
+}
+
+
+const db = { teachers, classes, students, news, anons };
 
 fs.writeFileSync("db.json", JSON.stringify(db, null, 2), "utf-8");
 

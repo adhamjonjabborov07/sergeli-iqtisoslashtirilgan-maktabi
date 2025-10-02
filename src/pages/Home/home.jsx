@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./home.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { FiBookOpen, FiUsers } from "react-icons/fi";
 import { LuGraduationCap } from "react-icons/lu";
 import { GoTrophy } from "react-icons/go";
@@ -17,6 +19,16 @@ function Home() {
   const [studentCount, setStudentCount] = useState(0);
   const [teacherCount, setTeacherCount] = useState(0);
   const [classCount, setClassCount] = useState(0);
+
+  // 🔥 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // animatsiya davomiyligi (ms)
+      once: true,     // faqat bir marta animatsiya bo‘lsin
+      offset: 100,    // scroll bo‘lganda qanchada chiqsin
+    });
+    AOS.refresh();
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/students")
@@ -41,13 +53,19 @@ function Home() {
     let teacherStep = teachers.length / steps;
     let classStep = classes.length / steps;
 
-    let s = 0, t = 0, c = 0;
+    let s = 0,
+      t = 0,
+      c = 0;
     const timer = setInterval(() => {
       s += studentStep;
       t += teacherStep;
       c += classStep;
 
-      if (s >= students.length && t >= teachers.length && c >= classes.length) {
+      if (
+        s >= students.length &&
+        t >= teachers.length &&
+        c >= classes.length
+      ) {
         clearInterval(timer);
         setStudentCount(students.length);
         setTeacherCount(teachers.length);
@@ -64,6 +82,7 @@ function Home() {
 
   return (
     <>
+      
       <div className="welcome-container">
         <Swiper
           modules={[Autoplay]}
@@ -105,6 +124,49 @@ function Home() {
           </div>
         </div>
       </div>
+
+      <section className="info">
+        <div className="info__container">
+          <div data-aos="fade-up" className="info__image">
+            <img
+              src="/src/pages/Home/school.jpg"
+              alt="Maktab ichki ko‘rinishi"
+            />
+          </div>
+
+          <div data-aos="fade-up" className="info__content">
+            <h2 className="info__title">Umumiy Ma'lumot</h2>
+
+            <div className="info__row">
+              <span className="info__line"></span>
+              <p className="info__text">
+                Sergeli tuman ixtisoslashtirilgan maktabi 2022-yilda faoliyatini
+                boshlagan. Maktab aniq va tabiiy fanlarga ixtisoslashgan bo‘lib,
+                ta’lim tili – o‘zbek. Shuningdek, ingliz tili (IELTS), koreys tili,
+                IT va robototexnika yo‘nalishlari mavjud.
+              </p>
+            </div>
+
+            <div className="info__row">
+              <span className="info__line"></span>
+              <p className="info__text">
+                Ilk o‘quv yili maktab 17 ta sinfda jami 408 ta o‘quvchini qamrab
+                olgan. 2023-yil sentabrda yangi bino foydalanishga topshirildi.
+                Hozirda 540 o‘quvchi 24 ta sinfda tahsil olmoqda.
+              </p>
+            </div>
+
+            <div className="info__row">
+              <span className="info__line"></span>
+              <p className="info__text">
+                Bugungi kunda 53 nafar pedagog faoliyat yuritadi. Ulardan yarmi
+                oliy toifali bo‘lib, 20 nafari xalqaro va milliy sertifikatlarga
+                ega.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="section-div">

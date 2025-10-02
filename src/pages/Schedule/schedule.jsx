@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import "./schedule.css";
 
@@ -55,7 +55,7 @@ function Schedule() {
       ) : (
         !showTable && (
           <button onClick={loadExcel} className="schedule-btn">
-            📖 Jadvalni ko‘rish
+            Jadvalni ko‘rish
           </button>
         )
       )}

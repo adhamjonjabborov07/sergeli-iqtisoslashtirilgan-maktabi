@@ -56,7 +56,6 @@ function News() {
                 <span className="date-text">{item.date}</span>
               </div>
 
-              {/* Obyektni state orqali yuboryapmiz */}
               <Link
                 to="/news/details"
                 state={{ news: item }}

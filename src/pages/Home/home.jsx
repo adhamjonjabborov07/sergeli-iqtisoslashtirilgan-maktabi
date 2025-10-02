@@ -20,12 +20,12 @@ function Home() {
   const [teacherCount, setTeacherCount] = useState(0);
   const [classCount, setClassCount] = useState(0);
 
-  // 🔥 AOS init
+
   useEffect(() => {
     AOS.init({
-      duration: 1000, // animatsiya davomiyligi (ms)
-      once: true,     // faqat bir marta animatsiya bo‘lsin
-      offset: 100,    // scroll bo‘lganda qanchada chiqsin
+      duration: 1000, 
+      once: false,    
+      offset: 100, 
     });
     AOS.refresh();
   }, []);

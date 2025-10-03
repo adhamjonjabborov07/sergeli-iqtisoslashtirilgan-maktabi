@@ -13,7 +13,7 @@ function Header() {
           <div className="header-logo-div">
             <img className="logo-website" src={Logo} alt="logo" />
             <div>
-              <p>Sergeli tuman</p>
+              <p>Sergeli Tuman</p>
               <p>Ixtisoslashtirilgan Maktab</p>
             </div>
           </div>

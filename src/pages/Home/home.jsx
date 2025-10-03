@@ -10,7 +10,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import "swiper/css";
-
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { EffectCoverflow, Pagination } from "swiper/modules";
 function Home() {
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
@@ -244,6 +246,62 @@ function Home() {
             </div>
           </div>
         </div>
+      </section>
+      <section>
+         <div className="w-full h-screen flex items-center justify-center bg-gray-900">
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 200,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        pagination={{ clickable: true }}
+        modules={[EffectCoverflow, Pagination]}
+        className="w-4/5"
+      >
+        <SwiperSlide className="w-[400px] h-[300px]">
+          <img
+            src="https://picsum.photos/id/1015/600/400"
+            alt="img1"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide className="w-[400px] h-[300px]">
+          <img
+            src="https://picsum.photos/id/1016/600/400"
+            alt="img2"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide className="w-[400px] h-[300px]">
+          <img
+            src="https://picsum.photos/id/1018/600/400"
+            alt="img3"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide className="w-[400px] h-[300px]">
+          <img
+            src="https://picsum.photos/id/1020/600/400"
+            alt="img4"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide className="w-[400px] h-[300px]">
+          <img
+            src="https://picsum.photos/id/1021/600/400"
+            alt="img5"
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </SwiperSlide>
+      </Swiper>
+    </div>
       </section>
     </>
   );

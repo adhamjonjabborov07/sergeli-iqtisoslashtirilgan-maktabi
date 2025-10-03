@@ -203,7 +203,7 @@ function Home() {
           </div>
 
           <div className="benefits-container">
-            <div data-aos="fade-up" data-aos-duration="1000" className="benefit-card">
+            <div className="benefit-card">
               <p className="benefit-card-icon">
                 <FiUsers size={30} />
               </p>
@@ -213,7 +213,7 @@ function Home() {
               </p>
             </div>
 
-            <div data-aos="fade-up" data-aos-duration="1300" className="benefit-card">
+            <div className="benefit-card">
               <p className="benefit-card-icon">
                 <FiBookOpen size={30} />
               </p>
@@ -223,7 +223,7 @@ function Home() {
               </p>
             </div>
 
-            <div data-aos="fade-up" data-aos-duration="1600" className="benefit-card">
+            <div className="benefit-card">
               <p className="benefit-card-icon">
                 <GoTrophy size={30} />
               </p>
@@ -233,7 +233,7 @@ function Home() {
               </p>
             </div>
 
-            <div data-aos="fade-up" data-aos-duration="1900" className="benefit-card">
+            <div className="benefit-card">
               <p className="benefit-card-icon">
                 <FaRegHeart size={30} />
               </p>

@@ -104,7 +104,7 @@ function Home() {
 
         <div className="welcome-overlay">
           <div className="welcome-content">
-            <h1 className="welcome-title">Bizning maktabimizga xush kelibsiz</h1>
+            <h1 className="welcome-title">Bizning maktabimizga xush kelimapsiz</h1>
             <p className="welcome-subtitle">Kelajak uchun ta'lim</p>
 
             <div className="features-section">

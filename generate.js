@@ -10,6 +10,35 @@ const teachers = [];
 const news = [];
 const anons = [];
 
+const director = {
+  id: 1,
+  firstName: faker.person.firstName(),
+  photo: faker.image.avatar(),
+  lastName: faker.person.lastName(),
+  age: faker.number.int({ min: 40, max: 65 }),
+  experienceYears: faker.number.int({ min: 10, max: 40 }),
+  position: "Director"
+};
+
+const principals = [];
+const PRINCIPALS_COUNT = 5;
+
+for (let i = 1; i <= PRINCIPALS_COUNT; i++) {
+  principals.push({
+    id: i,
+    firstName: faker.person.firstName(),
+    photo: faker.image.avatar(),
+    lastName: faker.person.lastName(),
+    age: faker.number.int({ min: 35, max: 60 }),
+    experienceYears: faker.number.int({ min: 5, max: 35 }),
+    position: faker.helpers.arrayElement([
+      "Deputy Director",
+      "Academic Principal",
+      "Administrative Principal"
+    ])
+  });
+}
+
 let classId = 1;
 let teacherId = 1;
 
@@ -89,8 +118,7 @@ for (let i = 1; i <= 5; i++) {
   });
 }
 
-
-const db = { teachers, classes, students, news, anons };
+const db = { director, principals, teachers, classes, students, news, anons };
 
 fs.writeFileSync("db.json", JSON.stringify(db, null, 2), "utf-8");
 

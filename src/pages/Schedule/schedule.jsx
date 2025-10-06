@@ -9,16 +9,11 @@ function Schedule() {
 
   useEffect(() => {
     const checkDevice = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
+      setIsMobile(window.innerWidth <= 768);
     };
 
     checkDevice();
     window.addEventListener("resize", checkDevice);
-
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
 
@@ -27,7 +22,6 @@ function Schedule() {
       const response = await fetch("/src/pages/Schedule/adres.xlsx");
       const arrayBuffer = await response.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer);
-
       const worksheet = workbook.Sheets[workbook.SheetNames[0]];
       const html = XLSX.utils.sheet_to_html(worksheet, { editable: false });
       setHtmlTable(html);
@@ -35,6 +29,11 @@ function Schedule() {
     } catch (err) {
       console.error("Excel faylni ochishda xato:", err);
     }
+  };
+
+  const hideTable = () => {
+    setShowTable(false);
+    setHtmlTable("");
   };
 
   return (
@@ -53,11 +52,17 @@ function Schedule() {
           📥 Jadvalni yuklab olish
         </a>
       ) : (
-        !showTable && (
-          <button onClick={loadExcel} className="schedule-btn">
-            Jadvalni ko‘rish
-          </button>
-        )
+        <>
+          {!showTable ? (
+            <button onClick={loadExcel} className="schedule-btn">
+              Jadvalni ko‘rish
+            </button>
+          ) : (
+            <button onClick={hideTable} className="schedule-btn close-btn">
+              Jadvalni berkitish
+            </button>
+          )}
+        </>
       )}
 
       {showTable && !isMobile && (

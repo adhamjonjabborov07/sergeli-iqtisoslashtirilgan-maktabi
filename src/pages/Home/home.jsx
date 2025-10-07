@@ -143,7 +143,7 @@ function Home() {
         </Swiper>
 
         <div className="welcome-overlay">
-          <div className="welcome-content">
+          <div data-aos="fade-up" className="welcome-content">
             <h1 className="welcome-title">Bizning maktabimizga xush kelibsiz</h1>
             <p className="welcome-subtitle">Kelajak uchun ta'lim</p>
 
@@ -209,7 +209,7 @@ function Home() {
       </section>
 
       <section className="section">
-        <div className="section-div">
+        <div data-aos="fade-up" className="section-div">
           <div className="section-div-card">
             <p className="section-div-card-icon">
               <LuGraduationCap size={30} />
@@ -349,7 +349,7 @@ function Home() {
         </div>
       </section>
       <section className="bg-gray-900 py-14">
-        <div className="w-[85%] mx-auto">
+        <div data-aos="fade-up" className="w-[85%] mx-auto">
           <Swiper
             loop={true}
             grabCursor={true}

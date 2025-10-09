@@ -36,7 +36,7 @@ function Header() {
           <li><Link to={"/schedule"}>Dars Jadvali</Link></li>
           <li><Link to={"/announcements"}>E’lonlar</Link></li>
           <li><Link to={"/addition"}>To'garaklar</Link></li>
-          <li><Link to={"/about"}>Biz Haqimizda</Link></li>
+          <li><Link to={"/contactus"}>Bog'lanish</Link></li>
           
         </ul>
       </nav>

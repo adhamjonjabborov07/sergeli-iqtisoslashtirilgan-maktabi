@@ -63,6 +63,7 @@ function News() {
               >
                 Batafsil
               </Link>
+              
             </div>
           </div>
         ))}

@@ -10,6 +10,7 @@ import Schedule from "./pages/Schedule/schedule";
 import Announcements from "./pages/Announcements/announcements";
 import About from "./pages/AboutUs/Aboutus";
 import NewsDetails from "./pages/NewsDetails/NewsDetails";
+import Addition from "./pages/Addition/addition"
 import TeacherDetails from "./pages/TeachersDetails/TeachersDetails";
 import Noutfound from "./pages/Notfound/notfound";
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/teachers/:id" element={<Layout><TeacherDetails/></Layout>}/>
         <Route path="/schedule" element={<Layout><Schedule/></Layout>}/>
         <Route path="/announcements" element={<Layout><Announcements/></Layout>}/>
+        <Route path="/addition" element={<Layout><Addition/></Layout>}/>
         <Route path="/about" element={<Layout><About/></Layout>}/>
         <Route path="*" element={<Layout><Noutfound/></Layout>}/>
       </Routes>

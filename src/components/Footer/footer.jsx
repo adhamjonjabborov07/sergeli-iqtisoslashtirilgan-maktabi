@@ -18,7 +18,7 @@ function Footer() {
               </div>
             </div>
           </Link>
-            <div className="footer-col">
+          <div className="footer-col">
             <a href="tel:+998901234567" className="footer-link">
               +998 90 123 45 67
             </a>
@@ -68,14 +68,19 @@ function Footer() {
             <Link to="/announcements" className="footer-link">
               E'lonlar
             </Link>
-            <Link to={"/about"}>Biz Haqimizda</Link>
+            <Link to="/addition" className="footer-link">
+              To'garaklar
+            </Link>
+            <Link to={"/about"}>
+              Biz Haqimizda
+            </Link>
           </div>
 
-        
+
         </div>
         <div className="footer-col">
           <h3>Bizning manzilimiz</h3>
-           <div className="footer-map">
+          <div className="footer-map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d551.5804135650701!2d69.2218422139766!3d41.210502803385936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae61c403191f6d%3A0xc8199e959d144b2e!2sSergeli%20ixtisoslashtirilgan%20maktab!5e0!3m2!1sru!2s!4v1758799393697!5m2!1sru!2s"
               width="100%"

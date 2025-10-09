@@ -1,137 +1,187 @@
-.anonslar {
-  padding: 40px 20px;
-  text-align: center;
+.anons-section {
+    text-align: center;
+    margin: 50px auto 30px;
+    max-width: 1000px;
+    padding: 0 20px;
 }
 
-.anonslar h2 {
-  font-size: 42px;
-  margin-bottom: 25px;
-  margin-top: 10px;
-  font-weight: 700;
-  color: #0d1b4c;
+.anons-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 12px;
 }
 
-.anons-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 25px;
-  justify-items: center;
+.anons-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
 }
 
-@media (max-width: 1200px) {
-  .anons-grid {
-    grid-template-columns: repeat(3, 1fr); 
-  }
+.anons-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    max-width: 100%;
+    height: 50px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    margin: 0 auto 30px;
+    padding: 0 14px;
+    transition: 0.3s;
 }
 
-@media (max-width: 900px) {
-  .anons-grid {
+.anons-form:focus-within {
+    border-color: #4a90e2;
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.4);
+}
+
+.anons-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.anons-input:focus {
+    outline: none;
+}
+
+:root {
+    --brand-blue: #133183;
+    --card-bg: #f2f4f678;
+    --muted: #6b7280;
+}
+
+.anons-list {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .anons-grid {
-    grid-template-columns: 1fr;
-  }
+    gap: 24px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 .anons-card {
-  background: #fff;
-  border-radius: 14px;
-  width: 100%;
-  max-width: 450px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: transform 0.25s ease;
-  display: flex;
-  flex-direction: column;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border-bottom: 5px solid rgba(30, 144, 255, 0.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    text-align: left;
 }
 
 .anons-card:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.02) rotateX(2deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-.anons-img-wrapper {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
+.anons-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 5px solid var(--brand-blue);
 }
 
-.anons-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.anons-card-header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 14px 18px 0;
 }
 
-.anons-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
-  color: #fff;
-  padding: 10px;
+.anons-card-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-blue);
+    margin: 0;
+    line-height: 1.2;
+    text-align: left;
 }
 
-.anons-overlay h3 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
+.anons-card p {
+    font-size: 15px;
+    color: #222;
+    margin: 10px 18px 0;
+    line-height: 1.5;
+    flex-grow: 1;
+    text-align: left;
+    min-height: 52px;
 }
 
-.anons-body {
-  padding: 15px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-grow: 1;
-}
-
-.anons-desc {
-  font-size: 15px;
-  color: #555;
-  flex-grow: 1;
+.anons-card-footer {
+    margin: 12px 18px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 }
 
 .anons-date {
-  font-size: 14px;
-  color: #888;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-.anons-time {
-  font-size: 15px;
-  font-weight: 600;
-  color: #0d1b4c;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.time-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--brand-blue);
+    background: rgba(30, 144, 255, 0.08);
+    border-radius: 6px;
+    padding: 4px;
+    width: 30px;
+    height: 30px;
 }
 
-.anons-location {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 15px;
-  color: #fff;
-  background: #0d1b4c;
-  padding: 8px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  margin-top: auto;
+.anons-detail-link {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #4b5563;
+    padding: 6px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-right: 10px;
 }
 
-.anons-location:hover {
-  background: #1a2e80;
+.anons-detail-link::before {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1e3a8a;
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
-.anons-icon {
-  font-size: 18px;
+.anons-detail-link:hover {
+    color: #1e3a8a;
+    padding-left: 0px;
 }
 
-.empty-msg {
-  color: #777;
-  font-size: 16px;
-  margin-top: 20px;
+.anons-detail-link:hover::before {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .anons-list {
+        grid-template-columns: 1fr;
+    }
+
+    .anons-card img {
+        height: 200px;
+    }
 }

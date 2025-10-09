@@ -7,6 +7,8 @@ import { LuGraduationCap } from "react-icons/lu";
 import { GoTrophy } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IoTimeOutline } from "react-icons/io5";
+import { IoCalendarNumber } from "react-icons/io5";
 import { Autoplay } from "swiper/modules";
 import { Link } from "react-router-dom";
 import "swiper/css";
@@ -310,9 +312,7 @@ function Home() {
       <section className="home-section" data-aos="fade-up">
         <div className="home-section__header">
           <h2 className="home-section__title">So‘nggi yangiliklar</h2>
-          <Link to="/news" className="home-section__link">
-            Yangiliklarga o‘tish →
-          </Link>
+          <Link to="/news" className="home-section__link">Yangiliklarga o‘tish →</Link>
         </div>
 
         <div className="home-section__grid">
@@ -321,7 +321,21 @@ function Home() {
               <img src={item.image} alt={item.title} className="home-card__img" />
               <div className="home-card__body">
                 <h3 className="home-card__title">{item.title}</h3>
-                <p className="home-card__desc">{item.shortText}</p>
+                <p className="home-card__desc">{item.description}</p>
+                <div className="home-card__footer">
+                  <div className="home-card__meta">
+                    <IoCalendarNumber className="home-card__icon" />
+                    <span>{item.date}</span>
+                  </div>
+                  <Link
+                    to={`/news/${item.id}`}
+                    state={{ news: item }}
+                    className="home-card__btn"
+                    aria-label={`Batafsil: ${item.title}`}
+                  >
+                    Batafsil
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -331,9 +345,7 @@ function Home() {
       <section className="home-section" data-aos="fade-up">
         <div className="home-section__header">
           <h2 className="home-section__title">E’lonlar</h2>
-          <Link to="/announcements" className="home-section__link">
-            E’lonlarga o‘tish →
-          </Link>
+          <Link to="/announcements" className="home-section__link">E’lonlarga o‘tish →</Link>
         </div>
 
         <div className="home-section__grid">
@@ -342,14 +354,21 @@ function Home() {
               <img src={item.image} alt={item.title} className="home-card__img" />
               <div className="home-card__body">
                 <h3 className="home-card__title">{item.title}</h3>
-                <p className="home-card__desc">{item.shortText}</p>
+                <p className="home-card__desc">{item.description}</p>
+                <div className="home-card__footer">
+                  <div className="home-card__meta">
+                    <IoTimeOutline className="home-card__icon" />
+                    <span>{item.time}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
+
       <section className="bg-gray-900 py-14">
-        <div data-aos="fade-up" className="w-[85%] mx-auto">
+        <div data-aos="fade-" className="w-[85%] mx-auto">
           <Swiper
             loop={true}
             grabCursor={true}

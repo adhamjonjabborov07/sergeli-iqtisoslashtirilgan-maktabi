@@ -9,6 +9,7 @@ const classes = [];
 const teachers = [];
 const news = [];
 const anons = [];
+const additions = [];
 
 const director = {
   id: 1,
@@ -17,7 +18,7 @@ const director = {
   lastName: faker.person.lastName(),
   age: faker.number.int({ min: 40, max: 65 }),
   experienceYears: faker.number.int({ min: 10, max: 40 }),
-  position: "Director"
+  position: "Director",
 };
 
 const principals = [];
@@ -34,8 +35,8 @@ for (let i = 1; i <= PRINCIPALS_COUNT; i++) {
     position: faker.helpers.arrayElement([
       "Deputy Director",
       "Academic Principal",
-      "Administrative Principal"
-    ])
+      "Administrative Principal",
+    ]),
   });
 }
 
@@ -114,12 +115,46 @@ for (let i = 1; i <= 5; i++) {
     startDate: startDate.toISOString().split("T")[0],
     endDate: endDate.toISOString().split("T")[0],
     time: "12:00 AM - 2:00 PM",
-    location: "https://maps.google.com/?q=Tashkent"
   });
 }
 
-const db = { director, principals, teachers, classes, students, news, anons };
+const CLUB_NAMES = [
+  "Robototexnika",
+  "Ingliz tili speaking club",
+  "Rasm chizish to‘garagi",
+  "Shaxmat to‘garagi",
+  "Matematika klubi",
+  "IT va dasturlash to‘garagi",
+  "Sport (futbol, voleybol)",
+  "Drama (teatr san’ati)",
+];
+
+for (let i = 1; i <= CLUB_NAMES.length; i++) {
+  additions.push({
+    id: i,
+    name: CLUB_NAMES[i - 1],
+    description: faker.lorem.paragraph({ min: 2, max: 4 }),
+    teacher: faker.person.fullName(),
+    schedule: faker.helpers.arrayElement([
+      "Dushanba-Chorshanba-Juma",
+      "Seshanba-Payshanba-Shanba",
+      "Hafta davomida (har kuni 15:00 - 17:00)",
+    ]),
+    image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
+    studentsCount: faker.number.int({ min: 10, max: 40 }),
+  });
+}
+
+const db = {
+  director,
+  principals,
+  teachers,
+  classes,
+  students,
+  news,
+  anons,
+  additions,
+};
 
 fs.writeFileSync("db.json", JSON.stringify(db, null, 2), "utf-8");
-
 console.log("✅ db.json tayyor!");

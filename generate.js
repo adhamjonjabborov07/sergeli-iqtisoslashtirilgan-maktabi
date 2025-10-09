@@ -135,13 +135,7 @@ for (let i = 1; i <= CLUB_NAMES.length; i++) {
     name: CLUB_NAMES[i - 1],
     description: faker.lorem.paragraph({ min: 2, max: 4 }),
     teacher: faker.person.fullName(),
-    schedule: faker.helpers.arrayElement([
-      "Dushanba-Chorshanba-Juma",
-      "Seshanba-Payshanba-Shanba",
-      "Hafta davomida (har kuni 15:00 - 17:00)",
-    ]),
     image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
-    studentsCount: faker.number.int({ min: 10, max: 40 }),
   });
 }
 

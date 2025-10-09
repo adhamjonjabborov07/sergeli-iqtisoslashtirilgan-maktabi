@@ -9,6 +9,7 @@ import Teachers from "./pages/Teachers/teachers";
 import Schedule from "./pages/Schedule/schedule";
 import Announcements from "./pages/Announcements/announcements";
 import About from "./pages/AboutUs/Aboutus";
+import AdditionDetails from './pages/AdditionDetails/AdditionDetails'
 import NewsDetails from "./pages/NewsDetails/NewsDetails";
 import Addition from "./pages/Addition/addition"
 import TeacherDetails from "./pages/TeachersDetails/TeachersDetails";
@@ -17,16 +18,17 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout><Home/></Layout>}/>
-        <Route path="/news" element={<Layout><News/></Layout>}/>
-        <Route path="/news/:id" element={<Layout><NewsDetails/></Layout>}/>
-        <Route path="/teachers" element={<Layout><Teachers/></Layout>}/>
-        <Route path="/teachers/:id" element={<Layout><TeacherDetails/></Layout>}/>
-        <Route path="/schedule" element={<Layout><Schedule/></Layout>}/>
-        <Route path="/announcements" element={<Layout><Announcements/></Layout>}/>
-        <Route path="/addition" element={<Layout><Addition/></Layout>}/>
-        <Route path="/about" element={<Layout><About/></Layout>}/>
-        <Route path="*" element={<Layout><Noutfound/></Layout>}/>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/news" element={<Layout><News /></Layout>} />
+        <Route path="/news/:id" element={<Layout><NewsDetails /></Layout>} />
+        <Route path="/teachers" element={<Layout><Teachers /></Layout>} />
+        <Route path="/teachers/:id" element={<Layout><TeacherDetails /></Layout>} />
+        <Route path="/schedule" element={<Layout><Schedule /></Layout>} />
+        <Route path="/addition/details" element={<Layout><AdditionDetails /></Layout>} />
+        <Route path="/announcements" element={<Layout><Announcements /></Layout>} />
+        <Route path="/addition" element={<Layout><Addition /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="*" element={<Layout><Noutfound /></Layout>} />
       </Routes>
     </>
   );

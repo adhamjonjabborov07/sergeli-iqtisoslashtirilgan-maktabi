@@ -4,7 +4,6 @@
     padding: 40px 20px 20px;
     border-top: 1px solid #e5e7eb;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-    border-radius: 12px 12px 0 0;
 }
 
 .footer-container {
@@ -160,8 +159,9 @@
     padding-top: 20px;
 }
 
-
-
+.ourcommand {
+    color: blue;
+}
 
 @media (max-width: 1200px) {
     .footer-container {

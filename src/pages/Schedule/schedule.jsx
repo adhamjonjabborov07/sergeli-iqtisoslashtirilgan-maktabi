@@ -58,7 +58,7 @@ function Schedule() {
               Jadvalni ko‘rish
             </button>
           ) : (
-            <button onClick={hideTable} className="schedule-btn close-btn">
+            <button onClick={hideTable} className="schedule-btn">
               Jadvalni berkitish
             </button>
           )}

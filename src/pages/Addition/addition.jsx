@@ -44,8 +44,8 @@ function Addition() {
 
             <div className="addition-list">
                 {filteredAdditions.map((item) => (
-                    <div key={item.title} className="addition-card">
-                        <img src={item.image} alt={item.title} />
+                    <div key={item.id} className="addition-card">
+                        <img src={item.image} alt={item.name} />
                         <div className="addition-card-header">
                             <h3>{item.name}</h3>
                         </div>
@@ -53,7 +53,12 @@ function Addition() {
                         <div className="addition-card-footer">
                             <div className="addition-date">
                                 <FaChalkboardTeacher className="time-icon" />
-                                <span className="teacher-text">{item.teacher}</span>
+                                <Link
+                                    to={`/addition/teacher/${item.teacherId}`}
+                                    className="teacher-text"
+                                >
+                                    {item.teacherName}
+                                </Link>
                             </div>
 
                             <Link

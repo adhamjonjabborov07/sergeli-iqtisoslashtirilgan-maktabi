@@ -3,6 +3,7 @@ import "./home.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FiBookOpen, FiUsers } from "react-icons/fi";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import { GoTrophy } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
@@ -15,15 +16,16 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper/modules";
+
 function Home() {
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [classes, setClasses] = useState([]);
-
   const [news, setNews] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
   const [director, setDirector] = useState([]);
   const [principals, setPrincipals] = useState([]);
+  const [additions, setAdditions] = useState([]);
 
   const [studentCount, setStudentCount] = useState(0);
   const [teacherCount, setTeacherCount] = useState(0);
@@ -31,6 +33,10 @@ function Home() {
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true, offset: 100 });
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -50,9 +56,9 @@ function Home() {
       .then((res) => res.json())
       .then((data) => setNews(data));
 
-    fetch("http://localhost:3000/director")
+    fetch("http://localhost:3000/additions")
       .then((res) => res.json())
-      .then((data) => setDirector(data));
+      .then((data) => setAdditions(data));
 
     fetch("http://localhost:3000/principals")
       .then((res) => res.json())
@@ -145,7 +151,7 @@ function Home() {
         </Swiper>
 
         <div className="welcome-overlay">
-          <div data-aos="fade-up" className="welcome-content">
+          <div className="welcome-content">
             <h1 className="welcome-title">Bizning maktabimizga xush kelibsiz</h1>
             <p className="welcome-subtitle">Kelajak uchun ta'lim</p>
 
@@ -169,14 +175,14 @@ function Home() {
 
       <section className="info">
         <div className="info__container">
-          <div data-aos="fade-up" className="info__image">
+          <div data-aos="fade-right" className="info__image">
             <img
               src="/src/pages/Home/banner2.png"
               alt="Maktab ichki ko‘rinishi"
             />
           </div>
 
-          <div data-aos="fade-up" className="info__content">
+          <div data-aos="fade-left" className="info__content">
             <h2 className="info__title">Maktabimiz haqida umumiy ma'lumot</h2>
 
             <div className="info__row">
@@ -291,83 +297,45 @@ function Home() {
         <section data-aos="fade-up" className="leadership-section">
           <h2 className="leadership-title">Maktab Rahbariyati</h2>
 
-          <div className="leadership-director">
-            <img src={director.photo} alt="Director" className="director-img" />
-            <h3 className="leadership-name">{director.firstName} {director.lastName}</h3>
-            <p className="leadership-position">{director.position}</p>
-          </div>
+          {principals.length > 0 && (
+            <Link
+              to={`/principals/${principals[0].id}`}
+              state={{ person: principals[0] }}
+              className="leadership-director"
+              key={principals[0].id}
+            >
+              <img src={principals[0].photo} alt="Director" className="director-img" />
+              <h3 className="leadership-name">
+                {principals[0].firstName} {principals[0].lastName}
+              </h3>
+              <p className="leadership-position">{principals[0].position}</p>
+            </Link>
+          )}
 
           <div className="leadership-principals">
-            {principals.map((principal) => (
-              <div key={principal.id} className="leadership-principal">
+            {principals.slice(1).map((principal) => (
+              <Link
+                key={principal.id}
+                to={`/principals/${principal.id}`}
+                state={{ person: principal }}
+                className="leadership-principal"
+              >
                 <img src={principal.photo} alt="Principal" className="principal-img" />
-                <h4 className="principal-name">{principal.firstName} {principal.lastName}</h4>
+                <h4 className="principal-name">
+                  {principal.firstName} {principal.lastName}
+                </h4>
                 <p className="principal-position">{principal.position}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
       </div>
-
-      <section className="home-section" data-aos="fade-up">
-        <div className="home-section__header">
-          <h2 className="home-section__title">So‘nggi yangiliklar</h2>
-          <Link to="/news" className="home-section__link">Yangiliklarga o‘tish →</Link>
+      <section data-aos="fade-up" className="bg-gray-900 py-14">
+        <div className="swiper-title-bottom">
+          <p className="swiper-botto-p">
+            Maktab Fotogalareyasi
+          </p>
         </div>
-
-        <div className="home-section__grid">
-          {news.slice(0, 3).map((item) => (
-            <div key={item.id} className="home-card">
-              <img src={item.image} alt={item.title} className="home-card__img" />
-              <div className="home-card__body">
-                <h3 className="home-card__title">{item.title}</h3>
-                <p className="home-card__desc">{item.description}</p>
-                <div className="home-card__footer">
-                  <div className="home-card__meta">
-                    <IoCalendarNumber className="home-card__icon" />
-                    <span>{item.date}</span>
-                  </div>
-                  <Link
-                    to={`/news/${item.id}`}
-                    state={{ news: item }}
-                    className="home-card__btn"
-                    aria-label={`Batafsil: ${item.title}`}
-                  >
-                    Batafsil
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="home-section" data-aos="fade-up">
-        <div className="home-section__header">
-          <h2 className="home-section__title">E’lonlar</h2>
-          <Link to="/announcements" className="home-section__link">E’lonlarga o‘tish →</Link>
-        </div>
-
-        <div className="home-section__grid">
-          {announcements.slice(0, 3).map((item) => (
-            <div key={item.id} className="home-card">
-              <img src={item.image} alt={item.title} className="home-card__img" />
-              <div className="home-card__body">
-                <h3 className="home-card__title">{item.title}</h3>
-                <p className="home-card__desc">{item.description}</p>
-                <div className="home-card__footer">
-                  <div className="home-card__meta">
-                    <IoTimeOutline className="home-card__icon" />
-                    <span>{item.time}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-gray-900 py-14">
         <div data-aos="fade-" className="w-[85%] mx-auto">
           <Swiper
             loop={true}
@@ -406,6 +374,107 @@ function Home() {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+      </section>
+
+      <section data-aos="fade-up" className="home-section">
+        <div className="home-section__header">
+          <h2 className="home-section__title">So‘nggi yangiliklar</h2>
+          <Link to="/news" className="home-section__link">Yangiliklarga o‘tish →</Link>
+        </div>
+
+        <div className="home-section__grid">
+          {news.slice(0, 3).map((item) => (
+            <div key={item.id} className="home-card">
+              <img src={item.image} alt={item.title} className="home-card__img" />
+              <div className="home-card__body">
+                <h3 className="home-card__title">{item.title}</h3>
+                <p className="home-card__desc">{item.description}</p>
+                <div className="home-card__footer">
+                  <div className="home-card__meta">
+                    <IoCalendarNumber className="home-card__icon" />
+                    <span>{item.date}</span>
+                  </div>
+                  <Link
+                    to={`/news/${item.id}`}
+                    state={{ news: item }}
+                    className="home-card__btn"
+                    aria-label={`Batafsil: ${item.title}`}
+                  >
+                    Batafsil
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section data-aos="fade-up" className="home-section">
+        <div className="home-section__header">
+          <h2 className="home-section__title">E’lonlar</h2>
+          <Link to="/announcements" className="home-section__link">E’lonlarga o‘tish →</Link>
+        </div>
+
+        <div className="home-section__grid">
+          {announcements.slice(0, 3).map((item) => (
+            <div key={item.id} className="home-card">
+              <img src={item.image} alt={item.title} className="home-card__img" />
+              <div className="home-card__body">
+                <h3 className="home-card__title">{item.title}</h3>
+                <p className="home-card__desc">{item.description}</p>
+                <div className="home-card__footer">
+                  <div className="home-card__meta">
+                    <IoTimeOutline className="home-card__icon" />
+                    <span>{item.time}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section data-aos="fade-up" className="home-section">
+        <div className="home-section__header">
+          <h2 className="home-section__title">So‘nggi to‘garaklar</h2>
+          <Link to="/addition" className="home-section__link">
+            To‘garaklarga o‘tish →
+          </Link>
+        </div>
+
+        <div className="home-section__grid">
+          {additions.slice(0, 3).map((item) => (
+            <div key={item.id} className="home-card">
+              <img src={item.image} alt={item.name} className="home-card__img" />
+
+              <div className="home-card__body">
+                <h3 className="home-card__title">{item.name}</h3>
+                <p className="home-card__desc">{item.description}</p>
+
+                <div className="home-card__footer">
+                  <div className="home-card__meta">
+                    <FaChalkboardTeacher className="home-card__icon" />
+                    <Link
+                      to={`/addition/teacher/${item.teacherId}`}
+                      className="teacher-text"
+                    >
+                      {item.teacherName}
+                    </Link>
+                  </div>
+
+                  <Link
+                    to="/addition/details"
+                    state={{ addition: item }}
+                    className="home-card__btn"
+                    aria-label={`Batafsil: ${item.name}`}
+                  >
+                    Batafsil
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </>

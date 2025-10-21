@@ -80,23 +80,7 @@ function Header() {
               <NavLink className="nav-links-home" to="/" end onClick={closeAllDropdowns}>Asosiy</NavLink>
             </li>
           </ul>
-
-          <div className="dropdown-container" ref={aboutDropdownRef}>
-            <button
-              className="dropdown-toggle"
-              onClick={toggleAboutDropdown}
-            >
-              Maktab Haqida
-              <span className={`arrow ${aboutDropdownOpen ? "up" : ""}`}></span>
-            </button>
-
-            <ul className={`dropdown-menu ${aboutDropdownOpen ? "show" : ""}`}>
-              <li>
-                <NavLink to="/teachers" onClick={closeAllDropdowns}>Ustozlar</NavLink>
-              </li>
-            </ul>
-          </div>
-
+          
           <div className="dropdown-container" ref={activityDropdownRef}>
             <button
               className="dropdown-toggle"
@@ -118,6 +102,22 @@ function Header() {
               </li>
               <li>
                 <NavLink to="/schedule" onClick={closeAllDropdowns}>Dars Jadvali</NavLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className="dropdown-container" ref={aboutDropdownRef}>
+            <button
+              className="dropdown-toggle"
+              onClick={toggleAboutDropdown}
+            >
+              Maktab Haqida
+              <span className={`arrow ${aboutDropdownOpen ? "up" : ""}`}></span>
+            </button>
+
+            <ul className={`dropdown-menu ${aboutDropdownOpen ? "show" : ""}`}>
+              <li>
+                <NavLink to="/teachers" onClick={closeAllDropdowns}>Ustozlar</NavLink>
               </li>
             </ul>
           </div>

@@ -1,4 +1,4 @@
-// this fucking piece of shit wrote by jonizz don't try read it, tg username @jonizz_devvvv
+// this fucking piece of shit wrote by jonizz don't try read it because it's fuck yourself, tg username @jonizz_devvvv
 // this fucking code wrote by notarius tg username poxuymasmi
 
 import { useEffect, useState } from "react";
@@ -13,7 +13,6 @@ import News from "./pages/News/news";
 import Teachers from "./pages/Teachers/teachers";
 import Schedule from "./pages/Schedule/schedule";
 import Announcements from "./pages/Announcements/announcements";
-import Contactus from "./pages/Contactus/Contactus";
 import AdditionDetails from "./pages/AdditionDetails/AdditionDetails";
 import NewsDetails from "./pages/NewsDetails/NewsDetails";
 import Addition from "./pages/Addition/addition";
@@ -130,7 +129,6 @@ function App() {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/announcements" element={<Layout><Announcements /></Layout>} />
         <Route path="/addition" element={<Layout><Addition /></Layout>} />
-        <Route path="/contactus" element={<Layout><Contactus /></Layout>} />
         <Route path="*" element={<Layout><Noutfound /></Layout>} />
       </Routes>
 

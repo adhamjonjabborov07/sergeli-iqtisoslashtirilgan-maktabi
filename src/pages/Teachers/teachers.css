@@ -45,10 +45,12 @@
     justify-content: space-between;
     height: 100%;
     min-height: 420px;
+    cursor: pointer;
+    border-bottom: 5px solid #c9d1e6;
 }
 
 .teacher-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.02) rotateX(2deg);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 

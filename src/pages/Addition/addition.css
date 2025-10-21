@@ -113,6 +113,10 @@
         flex-grow: 1;
         text-align: left;
         min-height: 52px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .addition-card-footer {
@@ -166,6 +170,11 @@
         font-size: 15px;
         font-weight: 500;
         margin-left: 10px;
+    }
+
+    .teacher-text:hover {
+        color: #007bff;
+        text-decoration: underline;
     }
 
     .time-icon {

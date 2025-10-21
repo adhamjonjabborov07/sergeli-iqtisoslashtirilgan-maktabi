@@ -1,8 +1,10 @@
 import { faker } from "@faker-js/faker";
 import fs from "fs";
 
-const TOTAL_STUDENTS = 504;
-const STUDENTS_PER_CLASS = 24;
+const TOTAL_STUDENTS = 540;
+const STUDENTS_PER_CLASS = 25;
+const TOTAL_CLASSES = 24;
+const TOTAL_TEACHERS = 50;
 
 const students = [];
 const classes = [];
@@ -10,95 +12,83 @@ const teachers = [];
 const news = [];
 const anons = [];
 const additions = [];
+const principals = [];
 
-const director = {
+principals.push({
   id: 1,
   firstName: faker.person.firstName(),
-  photo: faker.image.avatar(),
   lastName: faker.person.lastName(),
-  age: faker.number.int({ min: 40, max: 65 }),
-  experienceYears: faker.number.int({ min: 10, max: 40 }),
+  photo: faker.image.avatar(),
   position: "Director",
-};
+  biography: faker.lorem.paragraphs({ min: 2, max: 4 })
+});
 
-const principals = [];
-const PRINCIPALS_COUNT = 5;
-
-for (let i = 1; i <= PRINCIPALS_COUNT; i++) {
+for (let i = 2; i <= 6; i++) {
   principals.push({
     id: i,
     firstName: faker.person.firstName(),
-    photo: faker.image.avatar(),
     lastName: faker.person.lastName(),
-    age: faker.number.int({ min: 35, max: 60 }),
-    experienceYears: faker.number.int({ min: 5, max: 35 }),
+    photo: faker.image.avatar(),
     position: faker.helpers.arrayElement([
       "Deputy Director",
       "Academic Principal",
       "Administrative Principal",
     ]),
+    biography: faker.lorem.paragraphs({ min: 2, max: 4 })
   });
 }
 
-let classId = 1;
-let teacherId = 1;
+let studentId = 1;
 
-for (let i = 1; i <= TOTAL_STUDENTS; i++) {
-  if ((i - 1) % STUDENTS_PER_CLASS === 0) {
-    const grade = faker.number.int({ min: 5, max: 11 });
-    const section = faker.string.alpha({ length: 1, casing: "upper" });
+for (let i = 1; i <= TOTAL_CLASSES; i++) {
+  const grade = faker.number.int({ min: 5, max: 11 });
+  const section = faker.string.alpha({ length: 1, casing: "upper" });
 
-    classes.push({
-      id: classId,
-      name: `${grade}-${section}`,
-      grade,
-      room: faker.number.int({ min: 100, max: 400 }).toString(),
-      teacherId: teacherId,
-      studentIds: [],
-    });
+  classes.push({
+    id: i,
+    name: `${grade}-${section}`,
+    grade,
+    room: faker.number.int({ min: 100, max: 400 }).toString(),
+    teacherId: i,
+    studentIds: [],
+  });
 
-    teachers.push({
-      id: teacherId,
-      photo: faker.image.avatar(),
+  for (let j = 0; j < STUDENTS_PER_CLASS; j++) {
+    students.push({
+      id: studentId,
       firstName: faker.person.firstName(),
       lastName: faker.person.lastName(),
-      age: faker.number.int({ min: 25, max: 65 }),
-      workExperience: faker.number.int({ min: 1, max: 40 }),
-      subject: faker.helpers.arrayElement([
-        "Matematika",
-        "Fizika",
-        "Ingliz tili",
-        "Tarix",
-        "Kimyo",
-      ]),
-      classIds: [classId],
+      age: faker.number.int({ min: 12, max: 18 }),
+      gender: faker.helpers.arrayElement(["M", "F"]),
+      classId: i,
     });
 
-    teacherId++;
-    classId++;
+    classes[i - 1].studentIds.push(studentId);
+    studentId++;
   }
+}
 
-  const currentClassId = classId - 1;
-
-  const student = {
+for (let i = TOTAL_CLASSES + 1; i <= TOTAL_TEACHERS; i++) {
+  teachers.push({
     id: i,
+    photo: faker.image.avatar(),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
-    age: faker.number.int({ min: 12, max: 18 }),
-    gender: faker.helpers.arrayElement(["M", "F"]),
-    classId: currentClassId,
-  };
-
-  students.push(student);
-  classes[currentClassId - 1].studentIds.push(i);
+    subject: faker.helpers.arrayElement([
+      "Matematika", "Fizika", "Ingliz tili", "Tarix", "Kimyo",
+      "Biologiya", "Geografiya", "Rus tili", "Informatika"
+    ]),
+    classIds: [],
+    biography: faker.lorem.paragraphs({ min: 2, max: 4 })
+  });
 }
 
 for (let i = 1; i <= 12; i++) {
   news.push({
     id: i,
     image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
-    title: faker.lorem.sentence({ min: 3, max: 7 }),
-    description: faker.lorem.paragraph({ min: 2, max: 4 }),
+    title: faker.lorem.sentence(5),
+    description: faker.lorem.paragraph(3),
     date: faker.date.recent({ days: 30 }).toISOString().split("T")[0],
   });
 }
@@ -130,17 +120,22 @@ const CLUB_NAMES = [
 ];
 
 for (let i = 1; i <= CLUB_NAMES.length; i++) {
+  const randomTeacher = faker.helpers.arrayElement(teachers);
+
   additions.push({
     id: i,
     name: CLUB_NAMES[i - 1],
-    description: faker.lorem.paragraph({ min: 2, max: 4 }),
-    teacher: faker.person.fullName(),
+    description: faker.lorem.paragraph(3),
+    teacherId: randomTeacher.id,
+    teacherName: randomTeacher.firstName + " " + randomTeacher.lastName,
+    teacherPhoto: randomTeacher.photo,
+    teacherSubject: randomTeacher.subject,
+    teacherBiography: randomTeacher.biography,
     image: faker.image.urlPicsumPhotos({ width: 800, height: 400 }),
   });
 }
 
 const db = {
-  director,
   principals,
   teachers,
   classes,

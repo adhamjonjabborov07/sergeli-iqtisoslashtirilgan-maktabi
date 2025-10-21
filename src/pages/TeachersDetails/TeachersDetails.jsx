@@ -43,9 +43,10 @@ function TeacherDetails() {
       <p className="teacherdetails-subject">{teacher.subject}</p>
 
       <div className="teacherdetails-info">
-        <p><strong>Yoshi:</strong> {teacher.age} yosh</p>
-        <p><strong>Tajriba:</strong> {teacher.workExperience} yil</p>
+        <p><strong>Biografiya:</strong></p>
+        <p>{teacher.biography || "Biografiya hali qo‘shilmagan."}</p>
       </div>
+
     </div>
   );
 }

@@ -71,9 +71,6 @@ function Footer() {
             <Link to="/addition" className="footer-link">
               To'garaklar
             </Link>
-            <Link to={"/about"}>
-              Biz Haqimizda
-            </Link>
           </div>
 
 
@@ -98,6 +95,9 @@ function Footer() {
 
       <div className="footer-bottom">
         <p>© 2025 Lift Media. Hamma huquqlar himoyalangan.</p>
+        <Link className="ourcommand" to="/ourcommand">
+          Bizning jamoa
+        </Link>
       </div>
     </footer>
   );

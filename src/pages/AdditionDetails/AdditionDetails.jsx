@@ -33,7 +33,10 @@ function AdditionDetails() {
 
             <h2 className="additiondetails-title">{addition.name}</h2>
             <p className="additiondetails-teacher">
-                <strong>Ustoz:</strong> {addition.teacher}
+                <strong>Ustoz:</strong>{" "}
+                <Link to={`/addition/teacher/${addition.teacherId}`} className="teacher-link">
+                    {addition.teacherName}
+                </Link>
             </p>
             <p className="additiondetails-desc">{addition.description}</p>
 

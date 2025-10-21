@@ -7,13 +7,11 @@ import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Layout from "./components/Layout/layout";
 import Loader from "./components/Loader/Loader";
-
 import Home from "./pages/Home/home";
 import News from "./pages/News/news";
 import Teachers from "./pages/Teachers/teachers";
 import Schedule from "./pages/Schedule/schedule";
 import Announcements from "./pages/Announcements/announcements";
-import Contactus from "./pages/Contactus/Contactus";
 import AdditionDetails from "./pages/AdditionDetails/AdditionDetails";
 import NewsDetails from "./pages/NewsDetails/NewsDetails";
 import Addition from "./pages/Addition/addition";
@@ -24,7 +22,7 @@ import HomePrincipalsDetails from "./pages/HomePrincipalsDetails/HomePrincipalsD
 import OurCommand from "./pages/OurCommand/OurCommand";
 import Contact from "./pages/Contact/contact";
 import Chat from "./components/Chat/Chat"; 
-
+import TalentedStudents from "./pages/TalentedS/TalentedStudents";
 function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
@@ -37,6 +35,7 @@ function App() {
     "/announcements",
     "/addition",
     "/contact",
+    '/talentedstudents'
   ];
 
   useEffect(() => {
@@ -130,8 +129,8 @@ function App() {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/announcements" element={<Layout><Announcements /></Layout>} />
         <Route path="/addition" element={<Layout><Addition /></Layout>} />
-        <Route path="/contactus" element={<Layout><Contactus /></Layout>} />
         <Route path="*" element={<Layout><Noutfound /></Layout>} />
+        <Route path="/talentedstudents" element={<Layout><TalentedStudents/></Layout>} />
       </Routes>
 
       <Chat />

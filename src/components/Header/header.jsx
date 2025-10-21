@@ -94,6 +94,8 @@ function Header() {
               <li>
                 <NavLink to="/teachers" onClick={closeAllDropdowns}>Ustozlar</NavLink>
               </li>
+              <li>               
+                 <NavLink to="/talentedstudents" onClick={closeAllDropdowns}>O'quvchilar</NavLink></li>
             </ul>
           </div>
 

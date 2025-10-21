@@ -13,6 +13,8 @@ const news = [];
 const anons = [];
 const additions = [];
 const principals = [];
+const talentedStudents = [];
+
 
 principals.push({
   id: 1,
@@ -37,6 +39,7 @@ for (let i = 2; i <= 6; i++) {
     biography: faker.lorem.paragraphs({ min: 2, max: 4 })
   });
 }
+
 
 let studentId = 1;
 
@@ -68,6 +71,7 @@ for (let i = 1; i <= TOTAL_CLASSES; i++) {
   }
 }
 
+
 for (let i = TOTAL_CLASSES + 1; i <= TOTAL_TEACHERS; i++) {
   teachers.push({
     id: i,
@@ -83,6 +87,7 @@ for (let i = TOTAL_CLASSES + 1; i <= TOTAL_TEACHERS; i++) {
   });
 }
 
+
 for (let i = 1; i <= 12; i++) {
   news.push({
     id: i,
@@ -92,6 +97,7 @@ for (let i = 1; i <= 12; i++) {
     date: faker.date.recent({ days: 30 }).toISOString().split("T")[0],
   });
 }
+
 
 for (let i = 1; i <= 5; i++) {
   const startDate = faker.date.recent({ days: 10 });
@@ -107,6 +113,7 @@ for (let i = 1; i <= 5; i++) {
     time: "12:00 AM - 2:00 PM",
   });
 }
+
 
 const CLUB_NAMES = [
   "Robototexnika",
@@ -135,6 +142,18 @@ for (let i = 1; i <= CLUB_NAMES.length; i++) {
   });
 }
 
+
+for (let i = 1; i <= 10; i++) {
+  talentedStudents.push({
+    id: i,
+    image: faker.image.urlPicsumPhotos({ width: 400, height: 400 }),
+    firstName: faker.person.firstName(),
+    lastName: faker.person.lastName(),
+    biography: faker.lorem.paragraphs({ min: 2, max: 3 })
+  });
+}
+
+
 const db = {
   principals,
   teachers,
@@ -143,6 +162,7 @@ const db = {
   news,
   anons,
   additions,
+  talentedStudents, 
 };
 
 fs.writeFileSync("db.json", JSON.stringify(db, null, 2), "utf-8");

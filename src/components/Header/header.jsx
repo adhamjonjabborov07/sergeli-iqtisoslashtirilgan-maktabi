@@ -80,7 +80,7 @@ function Header() {
               <NavLink className="nav-links-home" to="/" end onClick={closeAllDropdowns}>Asosiy</NavLink>
             </li>
           </ul>
-          
+
           <div className="dropdown-container" ref={activityDropdownRef}>
             <button
               className="dropdown-toggle"
@@ -111,13 +111,16 @@ function Header() {
               className="dropdown-toggle"
               onClick={toggleAboutDropdown}
             >
-              Maktab Haqida
+              Maktab Hodimlari
               <span className={`arrow ${aboutDropdownOpen ? "up" : ""}`}></span>
             </button>
 
             <ul className={`dropdown-menu ${aboutDropdownOpen ? "show" : ""}`}>
               <li>
                 <NavLink to="/teachers" onClick={closeAllDropdowns}>Ustozlar</NavLink>
+              </li>
+              <li>
+                <NavLink to="/talentedstudents" onClick={closeAllDropdowns}>O'quvchilar</NavLink>
               </li>
             </ul>
           </div>
@@ -156,6 +159,9 @@ function Header() {
           </li>
           <li>
             <NavLink to="/addition" onClick={closeAllDropdowns}>To'garaklar</NavLink>
+          </li>
+          <li>
+            <NavLink to="/talentedstudents" onClick={closeAllDropdowns}>O'quvchilar</NavLink>
           </li>
           <li>
             <NavLink to="/contact" onClick={closeAllDropdowns}>Bog'lanish</NavLink>

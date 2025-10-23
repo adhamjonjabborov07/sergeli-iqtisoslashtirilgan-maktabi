@@ -152,14 +152,14 @@ function Home() {
 
         <div className="welcome-overlay">
           <div className="welcome-content">
-            <h1 className="welcome-title">Bizning maktabimizga xush kelibsiz</h1>
+            <h1 className="welcome-title">Sergeli tuman ixtisoslashgan maktabiga xush kelibsiz</h1>
             <p className="welcome-subtitle">Kelajak uchun ta'lim</p>
 
             <div className="features-section">
               <Link to={"/news"}>
                 <button className="feature-card-primary-card">
                   <FiBookOpen size={20} />
-                  <span>Oxirgi yangiliklar</span>
+                  <span>Maktab yangiliklari</span>
                 </button>
               </Link>
               <Link to={"/teachers"}>

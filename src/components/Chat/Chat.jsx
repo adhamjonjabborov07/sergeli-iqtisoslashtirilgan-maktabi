@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { GoogleGenAI } from "@google/genai";
-import { FiX, FiCopy, FiThumbsUp, FiThumbsDown, FiCheck } from "react-icons/fi";
+import { FiX, FiCopy, FiThumbsUp, FiThumbsDown, FiCheck, FiMaximize2, FiMinimize2 } from "react-icons/fi";
 import { RiGeminiFill } from "react-icons/ri";
 import "./chat.css";
 
@@ -12,11 +12,26 @@ export default function Chat() {
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
+    const [expanded, setExpanded] = useState(false);
     const [showWelcome, setShowWelcome] = useState(true);
     const [copiedIndex, setCopiedIndex] = useState(null);
-    const [feedback, setFeedback] = useState({}); 
+    const [feedback, setFeedback] = useState({});
+    const [isMobile, setIsMobile] = useState(false);
     const chatBoxRef = useRef(null);
     const intervalRef = useRef(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
 
     useEffect(() => {
         const savedMessages = localStorage.getItem("chatMessages");
@@ -35,7 +50,19 @@ export default function Chat() {
         if (chatBoxRef.current) chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
     }, [messages]);
 
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        setOpen(true);
+        setExpanded(false);
+    };
+
+    const toggleExpand = () => {
+        setExpanded(!expanded);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setExpanded(false);
+    };
 
     const sendMessage = async () => {
         if (!input.trim()) return;
@@ -49,7 +76,7 @@ export default function Chat() {
         setLoading(true);
 
         const aiMessageId = Date.now() + 1;
-        setMessages(prev => [...prev, { id: aiMessageId, sender: "ai", text: "O‘ylamoqda..." }]);
+        setMessages(prev => [...prev, { id: aiMessageId, sender: "ai", text: "O'ylamoqda..." }]);
 
         try {
             const response = await ai.models.generateContent({
@@ -59,11 +86,11 @@ export default function Chat() {
                         role: "model",
                         parts: [
                             {
-                                text: `Siz Sergeli tumanidagi ixtisoslashtirilgan maktabimiz bo‘yicha yordam beradigan AI siz.
-Bizning maktabimizda 500 dan ortiq o‘quvchi, 50 dan ortiq ustozlar, 20 dan ortiq sinflar mavjud.
-Manzilimiz: Sergeli tumani, Nilufar MFY, Sergeli 2-mavzesi, 64A-uy.
-Maktabda Mock testlar, Zakovatlar va turli olimpiadalar o‘tadi.
-Foydalanuvchiga salom aytish va maktab haqida savollariga yordam berish kerak.maktabda eng zo'r ustoz maftuna saidova matematika fani oqutuvchsi.Bu saytni Jahongir To'xtayev va Jabborov Adham yaratgan ular frontend va UI/UX qismini yozgan.`
+                                text: `Siz Sergeli tumanidagi ixtisoslashtirilgan maktabimiz bo'yicha yordam beradigan AI siz.
+                                       Bizning maktabimizda 500 dan ortiq o'quvchi, 50 dan ortiq ustozlar, 20 dan ortiq sinflar mavjud.
+                                       Manzilimiz: Sergeli tumani, Nilufar MFY, Sergeli 2-mavzesi, 64A-uy.
+                                       Maktabda Mock testlar, Zakovatlar va turli olimpiadalar o'tadi.
+                                       Foydalanuvchiga salom aytish va maktab haqida savollariga yordam berish kerak.maktabda eng zo'r ustoz maftuna saidova matematika fani oqutuvchsi.Bu saytni Jahongir To'xtayev va Jabborov Adham yaratgan ular frontend va UI/UX qismini yozgan.`
                             }
                         ]
                     },
@@ -78,7 +105,7 @@ Foydalanuvchiga salom aytish va maktab haqida savollariga yordam berish kerak.ma
                 .map(([k]) => k);
 
             if (dislikedMessages.some(id => botText.includes(messages.find(m => m.id == id)?.text))) {
-                botText = "Siz so‘ragan mavzuda avval dislike berilgan javob. Iltimos boshqa savol yozing.";
+                botText = "Siz so'ragan mavzuda avval dislike berilgan javob. Iltimos boshqa savol yozing.";
             }
 
             let index = 0;
@@ -123,16 +150,29 @@ Foydalanuvchiga salom aytish va maktab haqida savollariga yordam berish kerak.ma
 
     return (
         <div className={`chat-wrapper ${open ? "open" : ""}`}>
-            <div className={`chat-container ${open ? "expanded" : ""}`}>
-                {!open && <button className="chat-toggle-btn" onClick={handleOpen}><RiGeminiFill size={35} /></button>}
+            <div className={`chat-container ${open ? "expanded" : ""} ${expanded ? "full-expanded" : ""}`}>
+                {!open && (
+                    <button className="chat-toggle-btn" onClick={handleOpen}>
+                        <div className="icon-wrapper">
+                            <RiGeminiFill size={35} />
+                        </div>
+                    </button>
+                )}
 
                 {open && (
                     <>
                         <div className="chat-header">
                             <h1>STIM AI</h1>
-                            <button className="close-btn" onClick={() => setOpen(false)}>
-                                <FiX size={20} />
-                            </button>
+                            <div className="header-buttons">
+                                {!isMobile && (
+                                    <button className="expand-btn" onClick={toggleExpand} title={expanded ? "Kichiklashtirish" : "Kattalashtirish"}>
+                                        {expanded ? <FiMinimize2 size={16} /> : <FiMaximize2 size={16} />}
+                                    </button>
+                                )}
+                                <button className="close-btn" onClick={handleClose}>
+                                    <FiX size={20} />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="chat-box" ref={chatBoxRef}>
@@ -153,14 +193,14 @@ Foydalanuvchiga salom aytish va maktab haqida savollariga yordam berish kerak.ma
                                             <button
                                                 className={`like-btn ${feedback[m.id] === "like" ? "active" : ""}`}
                                                 onClick={() => rateMessage(m.id, true)}
-                                                title="Yo‘qdi"
+                                                title="Yo'qdi"
                                             >
                                                 <FiThumbsUp />
                                             </button>
                                             <button
                                                 className={`dislike-btn ${feedback[m.id] === "dislike" ? "active" : ""}`}
                                                 onClick={() => rateMessage(m.id, false)}
-                                                title="Yo‘qmadi"
+                                                title="Yo'qmadi"
                                             >
                                                 <FiThumbsDown />
                                             </button>

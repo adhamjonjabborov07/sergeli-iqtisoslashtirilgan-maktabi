@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { GoogleGenAI } from "@google/genai";
 import { FiX, FiCopy, FiThumbsUp, FiThumbsDown, FiCheck, FiMaximize2, FiMinimize2 } from "react-icons/fi";
 import { RiGeminiFill } from "react-icons/ri";
-import "./chat.css";
+import "./Chat.css";
 
 const API_KEY = "AIzaSyAe0IYgFvnGYLsnnh0fJXde80HRDh13mvg";
 const ai = new GoogleGenAI({ apiKey: API_KEY });

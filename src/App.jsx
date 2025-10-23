@@ -1,4 +1,4 @@
-// this fucking piece of shit wrote by jonizz don't try read it, tg username @jonizz_devvvv
+// this fucking piece of shit wrote by jonizz don't try read it because it's fuck yourself, tg username @jonizz_devvvv
 // this fucking code wrote by notarius tg username poxuymasmi
 
 import { useEffect, useState } from "react";
@@ -23,6 +23,7 @@ import OurCommand from "./pages/OurCommand/OurCommand";
 import Contact from "./pages/Contact/contact";
 import Chat from "./components/Chat/Chat"; 
 import TalentedStudents from "./pages/TalentedS/TalentedStudents";
+
 function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
@@ -131,8 +132,8 @@ function App() {
         <Route path="/addition" element={<Layout><Addition /></Layout>} />
         <Route path="*" element={<Layout><Noutfound /></Layout>} />
         <Route path="/talentedstudents" element={<Layout><TalentedStudents/></Layout>} />
+        
       </Routes>
-
       <Chat />
     </>
   );

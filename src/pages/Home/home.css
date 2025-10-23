@@ -272,7 +272,7 @@
 }
 
 .welcome-title {
-  font-size: 4.5rem;
+  font-size: 4.4rem;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -391,12 +391,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 297px;
+  width: 310px;
   background: #1e3b8a98;
   backdrop-filter: blur(6px);
   color: white;
   height: 60px;
-  font-size: 1.07rem;
+  font-size: 1.04rem;
   font-weight: 600;
   padding: 15px 65px;
   border: none;
@@ -415,7 +415,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  width: 285px;
+  width: 310px;
   height: 60px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(6px);
@@ -423,7 +423,7 @@
   color: white;
   font-size: 1.1rem;
   font-weight: 600;
-  padding: 15px 60px;
+  padding: 15px 65px;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;

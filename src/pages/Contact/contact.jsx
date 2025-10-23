@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./Contact.css";
+import "./contact.css";
 
 const Contact = () => {
     const form = useRef();
